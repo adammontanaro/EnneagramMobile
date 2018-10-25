@@ -1,0 +1,81 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 ArialMT;}
+{\colortbl;\red255\green255\blue255;\red76\green76\blue76;\red247\green247\blue247;}
+{\*\expandedcolortbl;;\cssrgb\c36863\c36863\c36863;\cssrgb\c97647\c97647\c97647;}
+\margl1440\margr1440\vieww17220\viewh15920\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 To Run My App:\
+\
+2 Terminals: \
+\
+For Rails API on DigitalOcean, run:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0     ssh root@159.65.110.155\
+and you\'92ll see:\
+    root@ruby-rails-s-1vcpu-1gb-sfo2-01:~# \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0     cd Go9App/go9-app-api/\
+    rails s\
+    lsof -i tcp:3000\
+    kill -9 XXX\
+\
+For app, in CLI, run:\
+    cd  EnneagramMobile\
+    expo start\
+\
+\
+Implementing auth\
+1. Store GUID in Redux locally (https://blog.usejournal.com/persisting-user-authentication-in-a-react-native-app-778e028ac816)\
+2. Use Okta\
+3. AWS\
+\
+\
+\
+\
+ICONS\
+\
+AUTH\
+okta\
+\pard\pardeftab720\sl300\partightenfactor0
+
+\f1\b\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Login redirect URIs: 
+\f0\b0\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 com.oktapreview.dev-105636:/callback\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 Client ID: 0oagu85gtgiiP2dEH0h7\
+\
+\
+https://infinitered.github.io/ionicons-version-3-search/\
+\
+https://reactnavigation.org/docs/en/auth-flow.html\
+\
+https://codeburst.io/how-to-build-a-good-api-using-rubyonrails-ef7eadfa3078\
+\
+How I added authentication to API: https://github.com/hggeorgiev/rails-jwt-auth-tutorial\
+\
+Testing it:\
+[amontanaro@amontanaros-MBP ~]$ curl -H "Content-Type: application/json" -X POST -d '\{"email":"example@mail.com","password":"123123123"\}' 159.65.110.155/authenticate\
+\{"auth_token":"eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NDA0OTMzMDh9.lWr3Q46NSFzjHxu4_6Vp-8DM_vaEUNyQHBge3J4zz3w"\}[amontanaro@amontanaros-MBP ~]$ \
+\
+then:\
+curl -H "Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NDA0OTMzMDh9.lWr3Q46NSFzjHxu4_6Vp-8DM_vaEUNyQHBge3J4zz3w" 159.65.110.155/dominant_types\
+\
+\
+\
+\
+rails new go9-app-api --api --database=postgresql\
+rails g scaffold Character name:string dominant_type:references\
+rails db:migrate\
+\
+AMPLIFY\
+amplify configure\
+$ npm install -g @aws-amplify/cli\
+$ amplify configure\
+cd EnneagramMobile\
+react-native run-ios\
+expo start\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 mv app/controllers/api/v1/* app/controllers/ }
